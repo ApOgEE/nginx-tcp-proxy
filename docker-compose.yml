@@ -1,0 +1,27 @@
+version: "3"
+
+services: 
+  nginxprox:
+    image: nginx:latest 
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx_log:/var/log/nginx
+    ports: 
+      - 3306:3306
+
+  maria_satu:
+    image: mariadb:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=testing123
+    volumes: 
+      - ./data1:/var/lib/mysql
+
+  maria_dua:
+    image: mariadb:latest
+    environment: 
+      - MYSQL_ROOT_PASSWORD=testing123
+    volumes: 
+      - ./data2:/var/lib/mysql    
+  
+
+
